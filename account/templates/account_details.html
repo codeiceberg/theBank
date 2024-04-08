@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<h3>Account Detials</h3>
+
+<div class="row" style="padding: 5px 0 5px 0">
+  <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+  <div class="col-sm-5">
+    <input class="form-control" id="name" type="text" readonly="" value={{account.name}}>
+  </div>
+</div>
+
+<div class="row" style="padding: 5px 0 5px 0">
+  <label for="inputPassword" class="col-sm-2 col-form-label">Balance</label>
+  <div class="col-sm-5">
+    <input class="form-control" id="account_balance" type="text" readonly="" value={{account.account_balance}}>
+  </div>
+</div>
+
+<div class="row" style="padding: 5px 0 5px 0">
+  <label for="inputPassword" class="col-sm-2 col-form-label">Account Type</label>
+  <div class="col-sm-5">
+    <input class="form-control" id="account_type" type="text" readonly="" value={{account.account_type}}>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <a href="{% url 'account_list' %}" class="btn btn-primary" style="width: 100px!important;">Cancel</a>
+    <a href="{% url 'account_update' pk=account.id %}" class="btn btn-secondary"
+      style="width: 100px!important;">Edit</a>
+    <a href="{% url 'account_delete' pk=account.id %}" class="btn btn-danger "
+      style="width: 100px!important;">Delete</a>
+  </div>
+</div>
+
+{% endblock %}

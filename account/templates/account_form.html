@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %} {% if account.id %}
+<h3>Edit Account</h3>
+{% else %}
+<h3>Create Account</h3>
+{% endif %}
+
+<form method="post" style="width: 50%">
+  {% csrf_token %} {{form.as_p}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="{% url 'account_list' %}" class="btn btn-secondary">Cancel</a>
+
+  {% if form.errors %}
+  <div class="row">
+    <div class="alert alert-danger">
+      {{form.errors.account_balance.as_text}}
+    </div>
+  </div>
+  {% endif %}
+</form>
+
+{% endblock %}

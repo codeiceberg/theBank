@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Account Type</th>
+      <th>Account Balance</th>
+      <th>Created By</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for account in accounts %}
+    <tr>
+      <td><a href="/account/{{account.id}}">{{account.name}}</a></td>
+      <td>{{account.account_type}}</td>
+      <td>{{account.account_balance}}</td>
+      <td>{{account.user}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'account_new' %}" class="btn btn-primary">Create New</a>
+{% endblock %}
