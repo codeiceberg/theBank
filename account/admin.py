@@ -10,7 +10,7 @@ class AccountAdmin(admin.ModelAdmin):
 
 class TransactionAdmin(admin.ModelAdmin):
     list_display = ('account', 'transaction_type',
-                    'transaction_amout', 'running_balance', 'transaction_date', )
+                    'transaction_amout', 'transaction_date', )
 
 
 admin.site.register(Account, AccountAdmin)

@@ -7,12 +7,20 @@ urlpatterns = [
 
     path('new', views.AccountCreateView.as_view(), name='account_new'),
 
-    path('<int:pk>', views.AccountDetailsView.as_view(), name='account_detail'),
+    path('<int:pk>/', views.AccountDetailsView.as_view(), name='account_detail'),
     # path('<int:id>', views.detail, name='account_detail'),
 
-    path('<int:pk>/edit', views.AccountUpdateView.as_view(), name='account_update'),
+    path('<int:pk>/edit/', views.AccountUpdateView.as_view(), name='account_update'),
 
-    path('<int:pk>/delete', views.AccountDeleteView.as_view(), name='account_delete'),
+    path('<int:pk>/delete/', views.AccountDeleteView.as_view(),
+         name='account_delete'),
+
+    path('transaction/new', views.TransactionCreateView.as_view(),
+         name='transaction_new/'),
+
+    path('<int:pk>/transaction/new/', views.TransactionCreateView.as_view(),
+         name='transaction_new'),
+
 
 
 

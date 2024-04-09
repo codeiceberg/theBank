@@ -1,35 +1,69 @@
 {% extends "base.html" %} {% block content %}
 <h3>Account Detials</h3>
 
-<div class="row" style="padding: 5px 0 5px 0">
-  <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
-  <div class="col-sm-5">
-    <input class="form-control" id="name" type="text" readonly="" value={{account.name}}>
-  </div>
-</div>
-
-<div class="row" style="padding: 5px 0 5px 0">
-  <label for="inputPassword" class="col-sm-2 col-form-label">Balance</label>
-  <div class="col-sm-5">
-    <input class="form-control" id="account_balance" type="text" readonly="" value={{account.account_balance}}>
-  </div>
-</div>
-
-<div class="row" style="padding: 5px 0 5px 0">
-  <label for="inputPassword" class="col-sm-2 col-form-label">Account Type</label>
-  <div class="col-sm-5">
-    <input class="form-control" id="account_type" type="text" readonly="" value={{account.account_type}}>
-  </div>
-</div>
-
 <div class="row">
-  <div class="col-sm-6">
-    <a href="{% url 'account_list' %}" class="btn btn-primary" style="width: 100px!important;">Cancel</a>
-    <a href="{% url 'account_update' pk=account.id %}" class="btn btn-secondary"
-      style="width: 100px!important;">Edit</a>
-    <a href="{% url 'account_delete' pk=account.id %}" class="btn btn-danger "
-      style="width: 100px!important;">Delete</a>
+  <div class="col-sm-10">
+    <div class="row" style="padding: 5px 0 5px 0">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-5">
+        <input class="form-control" id="name" type="text" readonly="" value={{account.name}}>
+      </div>
+    </div>
+
+    <div class="row" style="padding: 5px 0 5px 0">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Balance</label>
+      <div class="col-sm-5">
+        <input class="form-control" id="account_balance" type="text" readonly="" value={{account.account_balance}}>
+      </div>
+    </div>
+
+    <div class="row" style="padding: 5px 0 5px 0">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Account Type</label>
+      <div class="col-sm-5">
+        <input class="form-control" id="account_type" type="text" readonly="" value={{account.account_type}}>
+      </div>
+    </div>
   </div>
 </div>
 
+<br>
+<hr>
+
+<h5>Transaction History</h5>
+<div class="sub_container">
+  <table class="table table-sm table-striped table-hover" style="max-width: 800px;">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Transact Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+      <tr>
+        <td>{{transaction.id}}</td>
+        <td>{{transaction.transaction_type}}</td>
+        <td>{{transaction.transaction_amout}}</td>
+        <td>{{transaction.transaction_date}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="sticky-bottom">
+    <div class="float-end">
+      <a href="transaction/new/" class="btn btn-primary btn-sm float-end">New Transaction</a>
+      <!-- <a href="{{account.id}}/transaction/new/" class="btn btn-primary btn-sm">Create</a> -->
+    </div>
+  </div>
+</div>
+
+<div class="sticky-bottom">
+  <a href="{% url 'account_list' %}" class="btn btn-secondary btn-sm">Back</a>
+  <div class="float-end">
+    <a href="{% url 'account_update' pk=account.id %}" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="{% url 'account_delete' pk=account.id %}" class="btn btn-secondary btn-sm">Delete</a>
+  </div>
+</div>
 {% endblock %}
