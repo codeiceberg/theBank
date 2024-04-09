@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # apps
     'home',
     'account',
+    'api',
 ]
 
 MIDDLEWARE = [
